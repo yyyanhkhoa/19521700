@@ -75,9 +75,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		// Collision logic with other objects
 		//
 		for (UINT i = 0; i < coEventsResult.size(); i++)
-		{
-			
+		{			
 			LPCOLLISIONEVENT e = coEventsResult[i];
+
+			y1 = y + (e->dy);
 			
 			if (dynamic_cast<CGoomba*>(e->obj)) // if e->obj is Goomba 
 			{
@@ -166,12 +167,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					if (e->nx > 0)
 					{						
 						Koopas->SetState(KOOPAS_DIE_WALKING);
-						Koopas->vx = trunc(sqrt(vx * vx));
+						Koopas->dx = trunc(sqrt(dx * dx));
+						
 					}
 					if (e->nx < 0) 
 					{
 						Koopas->SetState(KOOPAS_DIE_WALKING);
-						Koopas->vx = -trunc(sqrt(vx * vx));
+						Koopas->dx = -trunc(sqrt(dx * dx));
 					}
 				}
 
@@ -214,9 +216,18 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				
 			if (dynamic_cast<CPortal*>(e->obj)) // mario meet portal
-			{					
-				CPortal* p = dynamic_cast<CPortal*>(e->obj);
-				CGame::GetInstance()->SwitchScene(p->GetSceneId());	
+			{			
+				//CPortal* p1 
+				CPortal* p = dynamic_cast<CPortal*>(e->obj);	
+					
+				if (p->GetSceneId() == 1  )
+				{					
+					if (MessageBoxA(NULL, (LPCSTR)"You win. Do you want to play again ?", (LPSTR)"Game over", MB_YESNO) == IDNO) 
+					{
+						exit(0);
+					}
+				}				
+				CGame::GetInstance()->SwitchScene(p->GetSceneId());				
 			}			
 		}
 	}
@@ -278,7 +289,7 @@ void CMario::SetState(int state)
 		nx = -1;
 		break;
 	case MARIO_STATE_JUMP:
-		vy = -MARIO_JUMP_SPEED_Y;		
+		vy = -MARIO_JUMP_SPEED_Y;					
 		break; 
 	case MARIO_STATE_IDLE: 
 		vx = 0;

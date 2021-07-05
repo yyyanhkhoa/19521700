@@ -25,7 +25,7 @@ protected:
 	void _ParseSection_OBJECTS(string line);
 
 	
-public: 
+public: 	
 	CPlayScene(int id, LPCWSTR filePath);
 
 	virtual void Load();

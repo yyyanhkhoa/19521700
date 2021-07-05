@@ -48,6 +48,7 @@ class CGame
 	void _ParseSection_SCENES(string line);
 
 public:
+	
 	void InitKeyboard();
 	void SetKeyHandler(LPKEYEVENTHANDLER handler) { keyHandler = handler; }
 	void Init(HWND hWnd);

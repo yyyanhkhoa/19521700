@@ -308,10 +308,8 @@
 
 
 #GATE
-100	-48	98	99
 100	1392	98	99
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
-50	-48	98	0	-32	150	1
 50	1392	98	0	1408	150	3

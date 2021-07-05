@@ -9,8 +9,7 @@ void CKoopas::GetBoundingBox(float &left, float &top, float &right, float &botto
 {
 	left = x;
 	top = y;
-	right = x + KOOPAS_BBOX_WIDTH;
-
+	right = x + KOOPAS_BBOX_WIDTH;	
 	if (state == KOOPAS_STATE_DIE)
 		bottom = y + KOOPAS_BBOX_HEIGHT_DIE;
 	else
@@ -81,6 +80,7 @@ void CKoopas::SetState(int state)
 		vx = KOOPAS_WALKING_SPEED;
 		break;
 	case KOOPAS_DIE_WALKING :
+		y = y - 11;
 		vx = KOOPAS_DIE_SPEED;
 		break;
 	}
