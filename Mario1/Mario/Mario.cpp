@@ -48,7 +48,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		untouchable = 0;
 	}
 
-	// No collision occured, proceed normally
+	// if no collision occurred, proceed normally
 	if (coEvents.size()==0)
 	{
 		x += dx; 
@@ -59,8 +59,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		float min_tx, min_ty, nx = 0, ny;
 		float rdx = 0; 
 		float rdy = 0;
-
-		// TODO: This is a very ugly designed function!!!!
+				
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 				
 		// block every object first!
@@ -69,11 +68,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if (nx!=0) vx = 0;
 		if (ny!=0) vy = 0;
+		
 
-
-		//
-		// Collision logic with other objects
-		//
+		// Collision logic with other objects		
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{			
 			LPCOLLISIONEVENT e = coEventsResult[i];
@@ -88,7 +85,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				if (e->ny < 0)
 				{
 					if (goomba->GetState()!= GOOMBA_STATE_DIE)
-					{
+					{						
 						goomba->SetState(GOOMBA_STATE_DIE);
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 					}
@@ -119,7 +116,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				if (e->ny < 0)
 				{
 					if (goombaW->GetState() != GOOMBAW_STATE_DIE)
-					{							
+					{
 						goombaW->SetState(GOOMBAW_STATE_DIE);
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 					}
@@ -179,12 +176,12 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}
 				}
 
-				// jump on top >> kill Koopas and deflect a bit 
+				// jump on top and kill
 				if (e->ny < 0)
 				{
 					if (Koopas->GetState() != KOOPAS_STATE_DIE)
 					{
-						Koopas->SetState(KOOPAS_STATE_DIE);
+						Koopas->SetState(KOOPAS_STATE_DIE);						
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 					}
 				}
@@ -212,19 +209,19 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				Levelup->SetState(LEVELUP_STATE_DIE);
 				if (level == MARIO_LEVEL_SMALL) 
 				{
+					vy = -0.3f;
 					level = MARIO_LEVEL_BIG;
 				}			
 			} // if levelup
 
 				
 			if (dynamic_cast<CPortal*>(e->obj)) // mario meet portal
-			{			
-				//CPortal* p1 
+			{				
 				CPortal* p = dynamic_cast<CPortal*>(e->obj);	
 					
 				if (p->GetSceneId() == 1  )
 				{					
-					if (MessageBoxA(NULL, (LPCSTR)"You win. Do you want to play again ?", (LPSTR)"Game over", MB_YESNO) == IDNO) 
+					if (MessageBoxA(NULL, (LPCSTR)"You win.\n Do you want to play again ?", (LPSTR)"Game over", MB_YESNO) == IDNO)
 					{
 						exit(0);
 					}

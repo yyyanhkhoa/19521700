@@ -39,18 +39,12 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-/*
-	Update world status for this frame
-	dt: time period between beginning of last frame and beginning of this frame
-*/
 void Update(DWORD dt)
 {
 	CGame::GetInstance()->GetCurrentScene()->Update(dt);
 }
 
-/*
-	Render a frame
-*/
+
 void Render()
 {
 	LPDIRECT3DDEVICE9 d3ddv = game->GetDirect3DDevice();
@@ -58,8 +52,7 @@ void Render()
 	LPD3DXSPRITE spriteHandler = game->GetSpriteHandler();
 
 	if (d3ddv->BeginScene())
-	{
-		// Clear back buffer with a color
+	{		
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
@@ -69,8 +62,7 @@ void Render()
 		spriteHandler->End();
 		d3ddv->EndScene();
 	}
-
-	// Display back buffer content to the screen
+		
 	d3ddv->Present(NULL, NULL, NULL, NULL);
 }
 
@@ -98,7 +90,7 @@ HWND CreateGameWindow(HINSTANCE hInstance, int nCmdShow, int ScreenWidth, int Sc
 		CreateWindow(
 			WINDOW_CLASS_NAME,
 			MAIN_WINDOW_TITLE,
-			WS_OVERLAPPEDWINDOW, // WS_EX_TOPMOST | WS_VISIBLE | WS_POPUP,
+			WS_OVERLAPPEDWINDOW, 
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
 			ScreenWidth,
@@ -139,9 +131,7 @@ int Run()
 		}
 
 		DWORD now = GetTickCount();
-
-		// dt: the time between (beginning of last frame) and now
-		// this frame: the frame we are about to render
+				
 		DWORD dt = now - frameStart;
 
 		if (dt >= tickPerFrame)

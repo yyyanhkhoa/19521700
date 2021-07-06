@@ -26,9 +26,7 @@ vector<string> split(string line, string delimeter)
 	return tokens;
 }
 
-/*
-char * string to wchar_t* string.
-*/
+
 wstring ToWSTR(string st)
 {
 	const char *str = st.c_str();
@@ -40,13 +38,10 @@ wstring ToWSTR(string st)
 
 	wstring wstr(wcstring);
 
-	// delete wcstring   // << can I ? 
+	
 	return wstr;
 }
 
-/*
-	Convert char* string to wchar_t* string.
-*/
 LPCWSTR ToLPCWSTR(string st)
 {
 	const char *str = st.c_str();
@@ -58,6 +53,6 @@ LPCWSTR ToLPCWSTR(string st)
 
 	wstring *w = new wstring(wcstring);
 
-	// delete wcstring   // << can I ? 
+	
 	return w->c_str();
 }

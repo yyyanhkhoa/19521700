@@ -45,8 +45,7 @@ class CMario : public CGameObject
 	DWORD untouchable_start;		
 	int y1;	
 	float start_x;			// initial position of Mario at scene
-	float start_y; 
-
+	float start_y; 	
 public: 	
 	CMario(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);

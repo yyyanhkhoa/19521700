@@ -49,14 +49,13 @@ void CGame::Init(HWND hWnd)
 
 	d3ddv->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &backBuffer);
 
-	// Initialize sprite helper from Direct3DX helper library
 	D3DXCreateSprite(d3ddv, &spriteHandler);
 
 	OutputDebugString(L"[INFO] InitGame done;\n");
 }
 
 /*
-	Utility function to wrap LPD3DXSPRITE::Draw 
+	Draw 
 */
 void CGame::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
 {
@@ -142,7 +141,7 @@ void CGame::ProcessKeyboard()
 		}
 		else
 		{
-			//DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
+			DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
 			return;
 		}
 	}
@@ -184,11 +183,10 @@ CGame::~CGame()
 	Standard sweptAABB implementation
 	Source: GameDev.net
 */
-void CGame::SweptAABB(
-	float ml, float mt,	float mr, float mb,			
-	float dx, float dy,			
-	float sl, float st, float sr, float sb,
-	float &t, float &nx, float &ny)
+void CGame::SweptAABB(	float ml, float mt,	float mr, float mb,			
+						float dx, float dy,			
+						float sl, float st, float sr, float sb,
+						float &t, float &nx, float &ny)
 {
 
 	float dx_entry, dx_exit, tx_entry, tx_exit;
