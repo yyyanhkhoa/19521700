@@ -284,7 +284,7 @@ void CPlayScene::Unload()
 
 void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 {
-	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
+	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 
 	CMario *mario = ((CPlayScene*)scence)->GetPlayer();
 	switch (KeyCode)
@@ -307,7 +307,13 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 	}			
 	}
 }
-
+void CPlayScenceKeyHandler::Lose()
+{
+	CMario* mario = ((CPlayScene*)scence)->GetPlayer();
+	mario->Reset();
+	scence->Unload();
+	scence->Load();
+}
 void CPlayScenceKeyHandler::KeyState(BYTE *states)
 {
 	CGame *game = CGame::GetInstance();

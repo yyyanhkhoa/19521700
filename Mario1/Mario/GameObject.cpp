@@ -58,12 +58,7 @@ LPCOLLISIONEVENT CGameObject::SweptAABBEx(LPGAMEOBJECT coO)
 	return e;
 }
 
-/*
-	Calculate potential collisions with the list of colliable objects 
-	
-	coObjects: the list of colliable objects
-	coEvents: list of potential collisions
-*/
+
 void CGameObject::CalcPotentialCollisions(
 	vector<LPGAMEOBJECT> *coObjects, 
 	vector<LPCOLLISIONEVENT> &coEvents)
@@ -109,7 +104,7 @@ void CGameObject::FilterCollision(
 			min_ty = c->t; ny = c->ny; min_iy = i; rdy = c->dy;
 		}
 	}
-
+	
 	if (min_ix>=0) coEventsResult.push_back(coEvents[min_ix]);
 	if (min_iy>=0) coEventsResult.push_back(coEvents[min_iy]);
 }

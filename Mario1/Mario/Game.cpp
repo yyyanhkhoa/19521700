@@ -8,12 +8,7 @@
 
 CGame * CGame::__instance = NULL;
 
-/*
-	Initialize DirectX, create a Direct3D device for rendering within the window, initial Sprite library for 
-	rendering 2D images
-	- hInst: Application instance handle
-	- hWnd: Application window handle
-*/
+
 void CGame::Init(HWND hWnd)
 {
 	LPDIRECT3D9 d3d = Direct3DCreate9(D3D_SDK_VERSION);
@@ -97,21 +92,11 @@ void CGame::InitKeyboard()
 
 	hr = di->CreateDevice(GUID_SysKeyboard, &didv, NULL);
 
-	// TO-DO: put in exception handling
 	if (hr != DI_OK) 
 	{
 		DebugOut(L"[ERROR] CreateDevice failed!\n");
 		return;
 	}
-
-	// Set the data format to "keyboard format" - a predefined data format 
-	//
-	// A data format specifies which controls on a device we
-	// are interested in, and how they should be reported.
-	//
-	// This tells DirectInput that we will be passing an array
-	// of 256 bytes to IDirectInputDevice::GetDeviceState.
-
 	hr = didv->SetDataFormat(&c_dfDIKeyboard);
 
 	hr = didv->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
@@ -123,7 +108,7 @@ void CGame::InitKeyboard()
 	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
 	dipdw.diph.dwObj = 0;
 	dipdw.diph.dwHow = DIPH_DEVICE;
-	dipdw.dwData = KEYBOARD_BUFFER_SIZE; // Arbitary buffer size
+	dipdw.dwData = KEYBOARD_BUFFER_SIZE; 
 
 	hr = didv->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph);
 

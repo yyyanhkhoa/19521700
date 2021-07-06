@@ -35,7 +35,8 @@
 #define MARIO_SMALL_BBOX_WIDTH  13
 #define MARIO_SMALL_BBOX_HEIGHT 15
 
-#define MARIO_UNTOUCHABLE_TIME 2000
+#define MARIO_UNTOUCHABLE_TIME 1000
+//#define MARIO_UNTOUCHABLE_KOOPAS 100
 
 class CMario : public CGameObject
 {
@@ -45,6 +46,7 @@ class CMario : public CGameObject
 	int y1;	
 	float start_x;			// initial position of Mario at scene
 	float start_y; 
+
 public: 	
 	CMario(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);

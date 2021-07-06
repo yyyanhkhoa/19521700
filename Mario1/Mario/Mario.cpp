@@ -4,13 +4,13 @@
 
 #include "Mario.h"
 #include "Game.h"
-
 #include "GoombaW.h"
 #include "Goomba.h"
 #include "Portal.h"
 #include "Koopas.h"
 #include "PlayScence.h"
 #include "levelup.h"
+
 
 CMario::CMario(float x, float y) : CGameObject()
 {
@@ -165,13 +165,15 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				if (Koopas->GetState() == KOOPAS_STATE_DIE)
 				{					
 					if (e->nx > 0)
-					{						
+					{				
+						StartUntouchable();
 						Koopas->SetState(KOOPAS_DIE_WALKING);
 						Koopas->dx = trunc(sqrt(dx * dx));
 						
 					}
 					if (e->nx < 0) 
 					{
+						StartUntouchable();
 						Koopas->SetState(KOOPAS_DIE_WALKING);
 						Koopas->dx = -trunc(sqrt(dx * dx));
 					}
@@ -226,7 +228,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					{
 						exit(0);
 					}
-				}				
+				}								
 				CGame::GetInstance()->SwitchScene(p->GetSceneId());				
 			}			
 		}
@@ -295,8 +297,8 @@ void CMario::SetState(int state)
 		vx = 0;
 		break;
 	case MARIO_STATE_DIE:
-		vy = -MARIO_DIE_DEFLECT_SPEED;
-		break;	
+		vy = -MARIO_DIE_DEFLECT_SPEED;				
+		break;			
 	}
 }
 
@@ -317,9 +319,7 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	}
 }
 
-/*
-	Reset Mario status to the beginning state of a scene
-*/
+
 void CMario::Reset()
 {
 	SetState(MARIO_STATE_IDLE);
@@ -327,4 +327,6 @@ void CMario::Reset()
 	SetPosition(start_x, start_y);
 	SetSpeed(0, 0);
 }
+
+
 
