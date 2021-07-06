@@ -1,3 +1,0 @@
-Cach choi :
-- Di chuyen : ->,<-, <space>
-- Reset : R 
