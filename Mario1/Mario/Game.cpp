@@ -43,7 +43,7 @@ void CGame::Init(HWND hWnd)
 
 	if (d3ddv == NULL)
 	{
-		OutputDebugString(L"[ERROR] CreateDevice failed\n");
+		//OutputDebugString(L"[ERROR] CreateDevice failed\n");
 		return;
 	}
 

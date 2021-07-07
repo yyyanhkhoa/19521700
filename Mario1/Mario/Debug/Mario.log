@@ -1,4 +1,4 @@
-﻿  Mario.cpp
+﻿  Game.cpp
 E:\Khoa\bt\phát triển game\Mario1\Mario\GameObject.h(66,72): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 E:\Khoa\bt\phát triển game\Mario1\Mario\GameObject.h(66,82): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 E:\Khoa\bt\phát triển game\Mario1\Mario\GameObject.h(70,42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
@@ -7,5 +7,4 @@ E:\Khoa\bt\phát triển game\Mario1\Mario\gate.h(4,1): warning C4005: 'BRICK_BB
 E:\Khoa\bt\phát triển game\Mario1\Mario\Brick.h(4): message : see previous definition of 'BRICK_BBOX_WIDTH'
 E:\Khoa\bt\phát triển game\Mario1\Mario\gate.h(5,1): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
 E:\Khoa\bt\phát triển game\Mario1\Mario\Brick.h(5): message : see previous definition of 'BRICK_BBOX_HEIGHT'
-E:\Khoa\bt\phát triển game\Mario1\Mario\Mario.cpp(78,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Mario.vcxproj -> E:\Khoa\bt\phát triển game\Mario1\Debug\Mario.exe
