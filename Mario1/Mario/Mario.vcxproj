@@ -184,6 +184,7 @@
     <Image Include="textures\bbox.png" />
     <Image Include="textures\enemies-2.png" />
     <Image Include="textures\enemies.png" />
+    <Image Include="textures\mario.png" />
     <Image Include="textures\misc.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

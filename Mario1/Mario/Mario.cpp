@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <assert.h>
 #include "Utils.h"
-
 #include "Mario.h"
 #include "Game.h"
 #include "GoombaW.h"
@@ -40,7 +39,21 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// turn off collision when die 
 	if (state!=MARIO_STATE_DIE)
 		CalcPotentialCollisions(coObjects, coEvents);
-
+	// set mario die when he too low
+	if (die == true) 
+	{
+		if (GetTickCount() - untouchable_start > 1000)
+		{
+			
+		}		
+		SetState(AFTER_DIE);
+	}
+	if (y > 180) 
+	{		
+		SetState(MARIO_STATE_DIE);			
+		die = true;		
+	}
+	
 	// reset untouchable timer if untouchable time has passed
 	if ( GetTickCount() - untouchable_start > MARIO_UNTOUCHABLE_TIME) 
 	{
@@ -294,8 +307,11 @@ void CMario::SetState(int state)
 		vx = 0;
 		break;
 	case MARIO_STATE_DIE:
-		vy = -MARIO_DIE_DEFLECT_SPEED;				
+		vy = -MARIO_DIE_DEFLECT_SPEED;		
 		break;			
+	case AFTER_DIE :
+		y = 250;
+		break;
 	}
 }
 

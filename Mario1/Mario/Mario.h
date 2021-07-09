@@ -23,7 +23,7 @@
 #define MARIO_ANI_BIG_WALKING_LEFT			5
 #define MARIO_ANI_SMALL_WALKING_RIGHT		6
 #define MARIO_ANI_SMALL_WALKING_LEFT		7
-
+#define AFTER_DIE					9
 #define MARIO_ANI_DIE				8
 
 #define	MARIO_LEVEL_SMALL	1
@@ -46,6 +46,7 @@ class CMario : public CGameObject
 	int y1;	
 	float start_x;			// initial position of Mario at scene
 	float start_y; 	
+	bool die = false;
 public: 	
 	CMario(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);

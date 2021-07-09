@@ -148,5 +148,8 @@
     <Image Include="textures\misc.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="textures\mario.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
