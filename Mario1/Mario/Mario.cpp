@@ -213,8 +213,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					level = MARIO_LEVEL_BIG;
 				}			
 			} // if levelup
+			
 
-				
 			if (dynamic_cast<CPortal*>(e->obj)) // mario meet portal
 			{				
 				CPortal* p = dynamic_cast<CPortal*>(e->obj);	
